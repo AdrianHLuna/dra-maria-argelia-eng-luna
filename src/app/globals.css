@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+/*
+ * "Clínica Dermatológica" — dirección de diseño generada con Google Stitch
+ * (2026-10-30), filtrada a solo su capa visual, porque este sitio es el
+ * primero del proyecto sin NINGÚN material de marca real entregado (ni
+ * logo, ni paleta). Salvia botánica + terracota cálida sobre fondo mineral
+ * cálido — verificada contra .agents/rules/registro-disenos.md, ningún otro
+ * sitio del proyecto usa esta combinación (los demás son navy/teal/gold/
+ * magenta/vino). Nunca copiar esta paleta a otro sitio.
+ */
+:root {
+  --color-primary: #3b5343; /* salvia botánico — CTAs, nav activa, "Enfermedades" */
+  --color-primary-dark: #243c2d; /* salvia oscuro — contraste AA en texto pequeño */
+  --color-secondary: #c87d55; /* terracota cálida — "Servicios", hover, acentos */
+  --color-peach: #e8b99b; /* durazno suave — "Síntomas", tags */
+  --color-surface: #ffffff; /* tarjetas, superficies elevadas */
+  --color-surface-soft: #faf6f0; /* fondo mineral cálido dominante */
+  --color-surface-blush: #f5efeb; /* franja alterna, un tono más cálido que surface-soft */
+  --color-ink: #1c261f; /* ink botánico oscuro, nunca negro puro */
+  --color-ink-soft: #55635a; /* texto secundario */
+  --color-border: #e4dcd2;
+
+  --primary: var(--color-primary);
+  --primary-foreground: #ffffff;
+  --accent: var(--color-secondary);
+  --accent-foreground: #ffffff;
+  --background: var(--color-surface);
+  --foreground: var(--color-ink);
+  --muted: var(--color-surface-blush);
+  --muted-foreground: var(--color-ink-soft);
+  --border: var(--color-border);
+
+  --font-heading: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-body: var(--font-plus-jakarta), system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-heading);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Marco de retrato con esquina asimétrica tipo arco de cantera — lenguaje de
+   forma propio de este sitio (ver nota de Stitch), nunca un recuadro recto
+   genérico ni el mismo patrón de otro doctor ya registrado. */
+.arch-frame {
+  border-radius: 2rem 0.75rem 2rem 0.75rem;
+}
+.arch-frame-sm {
+  border-radius: 1.25rem 0.5rem 1.25rem 0.5rem;
+}
+
+/* Animación ambiental continua, muy sutil — nunca un solo disparo de
+   entrada. Mismo espíritu que otros sitios del proyecto, intensidad propia. */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.035); opacity: 1; }
+}
+.animate-breathe {
+  animation: breathe 7s ease-in-out infinite;
+}
+@keyframes breathe-slow {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.06); opacity: 0.75; }
+}
+.animate-breathe-slow {
+  animation: breathe-slow 10s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-breathe,
+  .animate-breathe-slow {
+    animation: none;
+  }
+}
