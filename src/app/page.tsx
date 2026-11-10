@@ -273,16 +273,18 @@ export default function Home() {
               Ver todos los síntomas
             </Link>
           </div>
-          <div className="mt-10 flex gap-4 overflow-x-auto pb-2">
+          <div className="mt-10 flex gap-4 overflow-x-auto pb-4">
             {symptoms.slice(0, 8).map((symptom) => (
               <Link
                 key={symptom.id}
                 href={`/sintomas/${symptom.slug}`}
-                className="flex w-56 shrink-0 flex-col rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
+                className="group flex w-60 shrink-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-colors hover:bg-white/10"
               >
-                <Sparkles className="h-5 w-5 text-[color:var(--color-peach)]" aria-hidden="true" />
-                <p className="mt-3 font-semibold text-white">{symptom.name}</p>
-                <p className="mt-2 text-sm text-white/70">{symptom.description.slice(0, 70)}...</p>
+                <CardImageHeader src={symptom.image} alt={symptom.name} aspect="video" />
+                <div className="p-4">
+                  <p className="font-semibold text-white">{symptom.name}</p>
+                  <p className="mt-2 text-sm text-white/70">{symptom.description.slice(0, 70)}...</p>
+                </div>
               </Link>
             ))}
           </div>
