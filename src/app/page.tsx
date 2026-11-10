@@ -170,7 +170,7 @@ export default function Home() {
 
           <div className="mt-10 grid gap-6 md:grid-cols-[1.3fr_1fr]">
             <article className="group overflow-hidden rounded-3xl border border-border bg-white md:grid md:grid-cols-2">
-              <CardImageHeader alt={featuredService.name} aspect="4/3" />
+              <CardImageHeader src={featuredService.image} alt={featuredService.name} aspect="4/3" />
               <div className="flex flex-col justify-center p-8">
                 <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-[color:var(--color-peach)]/35 px-3 py-1 text-xs font-semibold text-[color:var(--color-secondary)]">
                   Procedimiento destacado
@@ -221,7 +221,7 @@ export default function Home() {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <article className="sm:col-span-2 lg:col-span-1 lg:row-span-2 overflow-hidden rounded-3xl border border-border bg-[color:var(--color-surface-blush)]">
-              <CardImageHeader alt={featuredDisease.name} aspect="16/10" />
+              <CardImageHeader src={featuredDisease.image} alt={featuredDisease.name} aspect="16/10" />
               <div className="p-6">
                 <h3 className="font-heading text-lg text-[color:var(--color-ink)]">{featuredDisease.name}</h3>
                 <p className="mt-2 text-sm text-[color:var(--color-ink-soft)]">
@@ -238,7 +238,7 @@ export default function Home() {
             </article>
             {restDiseases.map((disease) => (
               <article key={disease.id} className="overflow-hidden rounded-3xl border border-border bg-white">
-                <CardImageHeader alt={disease.name} />
+                <CardImageHeader src={disease.image} alt={disease.name} />
                 <div className="p-5">
                   <h3 className="font-semibold text-[color:var(--color-ink)]">{disease.name}</h3>
                   <p className="mt-2 text-sm text-[color:var(--color-ink-soft)]">{disease.description.slice(0, 90)}...</p>

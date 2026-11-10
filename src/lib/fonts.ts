@@ -8,7 +8,6 @@ import { Newsreader, Plus_Jakarta_Sans } from "next/font/google";
 // .agents/rules/registro-disenos.md).
 export const newsreader = Newsreader({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-newsreader",
   display: "swap",
