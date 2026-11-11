@@ -41,7 +41,7 @@ export const doctor: DoctorProfile = {
   schedule: "Lunes a viernes, 11:00 a.m. a 2:00 p.m. y 6:00 p.m. a 8:00 p.m.",
   openingHours: ["Mo-Fr 11:00-14:00", "Mo-Fr 18:00-20:00"],
   acceptingNewPatients: true,
-  photo: "/doctor-placeholder.jpg",
+  photo: "/images/hero.jpeg",
   bio: "La Dra. María Argelia Eng Luna es dermatóloga con más de 22 años de experiencia en Tampico, Tamaulipas. Egresada como Médico Cirujano de la Universidad Autónoma de Tamaulipas y especialista en Dermatología por la Universidad Nacional Autónoma de México (UNAM), atiende enfermedades de la piel, el cabello y las uñas, con especial atención al diagnóstico y tratamiento del cáncer de piel.",
   philosophy: "Cada paciente merece un diagnóstico dermatológico preciso y un trato humano, con la ciencia y la experiencia como base de cada decisión clínica.",
   experience: [],

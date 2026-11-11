@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -6,7 +7,6 @@ import {
   CreditCard,
   Landmark,
   ShieldCheck,
-  Sparkles,
   Sun,
 } from "lucide-react";
 import { doctor, diseases, services, symptoms } from "@/data";
@@ -14,7 +14,6 @@ import { generateHomeSchemas } from "@/lib/schemas";
 import { formatCredentials } from "@/lib/credentials";
 import StructuredData from "@/components/StructuredData";
 import CardImageHeader from "@/components/CardImageHeader";
-import Logo from "@/components/Logo";
 import InstitutionBadge from "@/components/InstitutionBadge";
 import AnimatedStat from "@/components/AnimatedStat";
 import AmbientAccents from "@/components/AmbientAccents";
@@ -37,8 +36,7 @@ export default function Home() {
       <StructuredData data={generateHomeSchemas()} />
 
       {/* HERO — asimétrica, columna izquierda editorial + columna derecha con
-          motivo gráfico propio (no hay foto real todavía) y tarjeta flotante
-          de certificación, en vez de un panel vacío. */}
+          fotografía real de la doctora y tarjeta flotante de certificación. */}
       <section className="relative isolate overflow-hidden bg-[color:var(--color-surface-soft)]">
         <div className="relative mx-auto grid min-h-screen max-w-6xl items-center gap-10 px-4 py-24 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
           <div>
@@ -76,14 +74,15 @@ export default function Home() {
 
           <div className="relative mx-auto w-full max-w-sm">
             <AmbientAccents variant="about" />
-            <div className="arch-frame relative z-10 aspect-[4/5] w-full overflow-hidden border border-primary/15 bg-gradient-to-br from-primary/15 via-[color:var(--color-peach)]/25 to-[color:var(--color-secondary)]/15">
-              <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-8 text-center">
-                <Logo size={88} />
-                <p className="font-heading text-xl text-primary">
-                  {doctor.title} {doctor.name}
-                </p>
-                <p className="text-sm text-[color:var(--color-ink-soft)]">{doctor.specialistTitle}</p>
-              </div>
+            <div className="arch-frame relative z-10 aspect-[4/5] w-full overflow-hidden border border-primary/15 bg-[color:var(--color-surface-blush)]">
+              <Image
+                src="/images/hero.jpeg"
+                alt={`${doctor.title} ${doctor.name}, ${doctor.specialistTitle}`}
+                fill
+                priority
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 384px"
+              />
             </div>
             <div className="arch-frame-sm absolute -bottom-6 -left-6 z-20 flex items-center gap-3 border border-border bg-white p-4 shadow-xl">
               <Award className="h-8 w-8 shrink-0 text-[color:var(--color-secondary)]" aria-hidden="true" />
@@ -115,13 +114,14 @@ export default function Home() {
       <section aria-labelledby="about-heading" className="relative overflow-hidden px-4 py-20">
         <AmbientAccents variant="certifications" />
         <div className="relative mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-start">
-          <div className="arch-frame mx-auto aspect-[3/4] w-full max-w-xs overflow-hidden border border-border bg-[color:var(--color-surface-blush)] md:mx-0">
-            <div className="flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-center">
-              <Logo size={72} />
-              <p className="text-sm text-[color:var(--color-ink-soft)]">
-                {doctor.title} {doctor.name}
-              </p>
-            </div>
+          <div className="arch-frame relative mx-auto aspect-[3/4] w-full max-w-xs overflow-hidden border border-border bg-[color:var(--color-surface-blush)] md:mx-0">
+            <Image
+              src="/images/aboutme.jpeg"
+              alt={`${doctor.title} ${doctor.name} en consulta dermatológica`}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 320px"
+            />
           </div>
           <div>
             <h2 id="about-heading" className="font-heading text-3xl font-semibold text-[color:var(--color-ink)]">
@@ -318,10 +318,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA FINAL — motivo gráfico propio: arcos concéntricos tipo "capas de
-          piel" que retoman el lenguaje del arch-frame, no anillos ni puntos
-          genéricos (para no repetir el motivo de otros sitios del proyecto). */}
-      <section aria-labelledby="cta-heading" className="relative overflow-hidden bg-primary px-4 py-20 text-center">
+      {/* CTA FINAL — motivo gráfico propio de arcos concéntricos + fotografía
+          de exploración dermatoscópica en marco editorial. */}
+      <section aria-labelledby="cta-heading" className="relative overflow-hidden bg-primary px-4 py-20">
         <div
           className="pointer-events-none absolute inset-0 opacity-20"
           aria-hidden="true"
@@ -331,23 +330,35 @@ export default function Home() {
           }}
         />
         <AmbientAccents variant="cta" />
-        <div className="relative mx-auto max-w-2xl">
-          <Sun className="mx-auto h-10 w-10 text-[color:var(--color-peach)]" aria-hidden="true" />
-          <h2 id="cta-heading" className="mt-4 font-heading text-3xl font-semibold text-white">
-            No dejes pasar tu salud de la piel
-          </h2>
-          <p className="mt-3 text-white/85">
-            Agenda tu valoración con {doctor.title} {doctor.name} y recibe un diagnóstico claro desde la primera consulta.
-          </p>
-          <a
-            href={`https://wa.me/${doctor.whatsapp.replace(/\D/g, "")}`}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-semibold text-primary shadow-lg transition-transform hover:scale-105"
-          >
-            Agendar cita ahora
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </a>
+        <div className="relative mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-[1.2fr_0.8fr]">
+          <div className="text-center md:text-left">
+            <Sun className="mx-auto h-10 w-10 text-[color:var(--color-peach)] md:mx-0" aria-hidden="true" />
+            <h2 id="cta-heading" className="mt-4 font-heading text-3xl font-semibold text-white">
+              No dejes pasar tu salud de la piel
+            </h2>
+            <p className="mt-3 text-white/85">
+              Agenda tu valoración con {doctor.title} {doctor.name} y recibe un diagnóstico claro desde la primera consulta.
+            </p>
+            <a
+              href={`https://wa.me/${doctor.whatsapp.replace(/\D/g, "")}`}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-semibold text-primary shadow-lg transition-transform hover:scale-105"
+            >
+              Agendar cita ahora
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+          <div className="arch-frame mx-auto w-full max-w-xs overflow-hidden border border-white/20 shadow-2xl">
+            <Image
+              src="/images/call_to_action.jpeg"
+              alt={`${doctor.title} ${doctor.name} realizando revisión dermatoscópica`}
+              width={1035}
+              height={1600}
+              className="h-auto w-full"
+              sizes="(max-width: 768px) 100vw, 320px"
+            />
+          </div>
         </div>
       </section>
 

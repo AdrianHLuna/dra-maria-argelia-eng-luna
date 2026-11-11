@@ -1,8 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Route } from "next";
 import { Clock, MapPin, MessageCircle, Phone, ShieldAlert } from "lucide-react";
 import { doctor } from "@/data";
-import Logo from "./Logo";
 
 interface RelatedItem {
   name: string;
@@ -26,7 +26,15 @@ export default function DetailSidebar({ related = [] }: DetailSidebarProps) {
   return (
     <aside className="space-y-5 md:sticky md:top-24">
       <div className="arch-frame-sm border border-primary/15 bg-[color:var(--color-surface-blush)] p-6 text-center">
-        <Logo size={56} className="mx-auto" />
+        <div className="relative mx-auto h-20 w-20 overflow-hidden rounded-full border-2 border-primary/20">
+          <Image
+            src={doctor.photo}
+            alt={`${doctor.title} ${doctor.name}`}
+            fill
+            className="object-cover object-top"
+            sizes="80px"
+          />
+        </div>
         <p className="mt-3 font-semibold text-[color:var(--color-ink)]">
           {doctor.title} {doctor.name}
         </p>
