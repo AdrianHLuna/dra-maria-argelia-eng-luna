@@ -15,7 +15,6 @@ import { formatCredentials } from "@/lib/credentials";
 import StructuredData from "@/components/StructuredData";
 import CardImageHeader from "@/components/CardImageHeader";
 import InstitutionBadge from "@/components/InstitutionBadge";
-import AnimatedStat from "@/components/AnimatedStat";
 import AmbientAccents from "@/components/AmbientAccents";
 
 function paymentIcon(method: string) {
@@ -92,20 +91,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* BANDA DE ESTADÍSTICAS — ancho completo, fondo salvia oscuro. */}
-      <section aria-labelledby="stats-heading" className="bg-primary px-4 py-12">
-        <h2 id="stats-heading" className="sr-only">
-          {doctor.title} {doctor.name} en cifras
-        </h2>
-        <div className="mx-auto grid max-w-4xl gap-8 text-center sm:grid-cols-3">
-          {doctor.stats?.map((stat, i) => (
-            <div key={i} className="rounded-2xl bg-white/95 px-4 py-6">
-              <AnimatedStat value={stat.value} label={stat.label} />
-            </div>
-          ))}
         </div>
       </section>
 
