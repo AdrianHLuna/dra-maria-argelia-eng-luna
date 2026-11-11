@@ -31,8 +31,8 @@ export const doctor: DoctorProfile = {
   city: "Tampico",
   state: "Tamaulipas",
   country: "México",
-  googleMapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Privada+Universidad+102%2C+Colonia+Universidad+Sur%2C+Tampico%2C+Tamaulipas",
+  googleMapsUrl: "https://g.page/r/CYGNnTCPCErYEBM/",
+  geo: { latitude: 22.2687258, longitude: -97.8593638 },
   consultationPrice: 1000,
   paymentMethods: ["Efectivo", "Transferencia", "Tarjeta de débito", "Tarjeta de crédito"],
   // La doctora NO acepta seguros médicos (dato real del intake, "no") —

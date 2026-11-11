@@ -1,6 +1,7 @@
 interface MapFacadeProps {
   address: string;
   whatsapp: string;
+  embedUrl?: string;
 }
 
 /**
@@ -20,8 +21,9 @@ interface MapFacadeProps {
  * nombre del componente se conserva por compatibilidad con el resto del
  * código, aunque ya no es un "facade" con clic.
  */
-export default function MapFacade({ address }: MapFacadeProps) {
-  const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+export default function MapFacade({ address, embedUrl }: MapFacadeProps) {
+  const mapsEmbedUrl =
+    embedUrl || `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
 
   return (
     <div className="h-[60vh] w-full bg-muted md:h-[70vh]">

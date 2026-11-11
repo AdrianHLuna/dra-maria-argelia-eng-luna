@@ -15,13 +15,25 @@ export default function ContactoPage() {
     <main>
       <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Contacto" }]} isDark={false} />
 
-      <MapFacade address={doctor.address} whatsapp={doctor.whatsapp} />
+      <MapFacade
+        address={doctor.address}
+        whatsapp={doctor.whatsapp}
+        embedUrl="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!3m2!1m1!4s15585278871558000001"
+      />
 
       <div className="mx-auto grid max-w-6xl gap-6 px-4 py-14 sm:grid-cols-3">
         <div className="rounded-2xl border border-border bg-white p-6">
           <MapPin className="h-5 w-5 text-primary" aria-hidden="true" />
           <h2 className="mt-3 font-semibold text-[color:var(--color-ink)]">Dirección</h2>
           <p className="mt-1 text-sm text-[color:var(--color-ink-soft)]">{doctor.address}</p>
+          <a
+            href={doctor.googleMapsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-block text-sm font-semibold text-primary hover:underline"
+          >
+            Ver ficha en Google Maps
+          </a>
         </div>
         <div className="rounded-2xl border border-border bg-white p-6">
           <Clock className="h-5 w-5 text-primary" aria-hidden="true" />
